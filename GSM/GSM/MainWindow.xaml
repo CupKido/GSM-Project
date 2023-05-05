@@ -1,0 +1,114 @@
+﻿<Window x:Class="GSM.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GSM" 
+        xmlns:views="clr-namespace:GSM.Views" 
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="Game Server Manager"
+        Height="580" Width="1085"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        AllowsTransparency="True"
+        Background="Transparent">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <materialDesign:ColorZone Padding="10"
+  materialDesign:ElevationAssist.Elevation="Dp4"
+  Mode="PrimaryDark"
+  Height="49" VerticalAlignment="Center">
+            <Grid
+     Margin="0,0,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0"
+      Margin="16,0,0,0"
+      VerticalAlignment="Center"
+      Text="Game Server Management" />
+
+                <Button Grid.Column="4"
+  IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+  Style="{StaticResource MaterialDesignFloatingActionMiniSecondaryDarkButton}"
+                    Background="Black"
+  ToolTip="MaterialDesignFloatingActionMiniSecondaryDarkButton" 
+                    Width="20" Height="20" Click="Exit">
+                    <materialDesign:PackIcon
+    Width="15"
+    Height="15"
+    Kind="Close" />
+                </Button>
+            </Grid>
+        </materialDesign:ColorZone>
+
+        <materialDesign:Card Grid.Row="1">
+            <TabControl
+    materialDesign:ColorZoneAssist.Mode="Standard"
+    materialDesign:ElevationAssist.Elevation="Dp4"
+    Style="{StaticResource MaterialDesignNavigationRailTabControl}">
+                <TabItem>
+                    <TabItem.Header>
+                        <StackPanel
+          Width="auto"
+          Height="auto">
+                            <materialDesign:PackIcon
+            Width="24"
+            Height="24"
+            HorizontalAlignment="Center"
+            Kind="MicrosoftXboxController" />
+                            <TextBlock
+            HorizontalAlignment="Center"
+            Text="Games" Height="43"/>
+                        </StackPanel>
+                    </TabItem.Header>
+                    <views:GameListView/>
+
+                </TabItem>
+                <TabItem>
+                    <TabItem.Header>
+                        <StackPanel
+          Width="auto"
+          Height="auto">
+                            <materialDesign:PackIcon
+            Width="24"
+            Height="24"
+            HorizontalAlignment="Center"
+            Kind="Server"/>
+                            <TextBlock
+            HorizontalAlignment="Center"
+            Text="Servers" Height="43" />
+                        </StackPanel>
+                    </TabItem.Header>
+                    <views:ServersButtons/>
+                </TabItem>
+                <TabItem>
+                    <TabItem.Header>
+                        <StackPanel
+          Width="auto"
+          Height="auto">
+                            <materialDesign:PackIcon
+            Width="24"
+            Height="24"
+            HorizontalAlignment="Center"
+            Kind="Analytics" />
+                            <TextBlock
+            HorizontalAlignment="Center"
+            Text="Analytics" />
+                        </StackPanel>
+                    </TabItem.Header>
+                    <views:Analytics/>
+                </TabItem>
+                
+            </TabControl>
+        </materialDesign:Card>
+
+    </Grid>
+
+</Window>
